@@ -50,3 +50,6 @@ latex.out/
 # algorithms
 *.alg
 *.loa
+
+# build file in .build dir
+.build/
