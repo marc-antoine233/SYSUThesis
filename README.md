@@ -1,4 +1,4 @@
-# 中山大学毕业论文/设计 LaTeX 模板
+# 中山大学毕业论文/设计 LaTeX 模板（本科/研究生）（试用）
 
 [![GitHub release](https://img.shields.io/github/release/ustctug/ustcthesis/all.svg)](https://github.com/ustctug/ustcthesis/releases/latest)
 [![GitHub commits](https://img.shields.io/github/commits-since/ustctug/ustcthesis/latest.svg)](https://github.com/ustctug/ustcthesis/commits/master)
