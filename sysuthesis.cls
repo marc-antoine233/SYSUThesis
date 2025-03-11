@@ -568,7 +568,7 @@
 % 所以“acknowledgements”也保持一致。
 \newcommand\sysu@set@chapter@names{%
   \ifsysu@main@language@chinese
-    \def\contentsname{目录}%
+    \def\contentsname{目\hspace{2em} 录}%
     \def\listfigurename{插图清单}%
     \def\listtablename{附表清单}%
     \def\sysu@list@figure@table@name{插图和附表清单}%
@@ -1897,7 +1897,7 @@
   	  \raggedleft\fangsong\fontsize{14bp}{14bp}\selectfont
   	  \null\sysu@secret@level\par}\par
 %  	  \vskip 0.5cm%
-  	\includegraphics[width=11cm]{figures/SYSULogo}\\
+    \includegraphics[width=11cm]{figures/SYSULogo}\\
   	\vskip 1.2cm%
   	{\rmfamily\bfseries\fontsize{26bp}{26bp}\selectfont
   		\sysu@thesis@name\par}%
@@ -1947,7 +1947,7 @@
     \sysu@pdfbookmark{Cover}%
     \centering
     \vskip 0.5cm%
-    \includegraphics[width=3cm]{figures/sysu-logo.pdf}%
+    \includegraphics[width=3cm]{figures/sysu-logo.pdf}
     \vskip 1.2cm%
                 {\zihao{-0}\textcolor{sysugreen}{\rmfamily\textbf{\ 本科生毕业论文（设计）}}}
     
@@ -2089,8 +2089,9 @@
     \vskip 0.7cm%
     \sysu@originality\par
     \vskip 1.3cm%
-    作者签名：\sysu@underline{}\hspace{2.7cm}%
-    签字日期：\sysu@underline{}\par
+    学位论文作者签名：\hspace{3cm} \par %
+    \vskip 0.5cm%
+    日期：\hspace{1.1cm} 年 \hspace{0.7cm} 月 \hspace{0.7cm} 日\par
     \vskip 1.9cm%
     {\centering\sffamily\fontsize{16bp}{32bp}\selectfont
      学位论文使用授权声明\par}%
@@ -2105,11 +2106,11 @@
 %      \sysu@checkbox{} 控阅（\sysu@underline[0.8cm]{\sysu@secret@year}年）\par
 %    \fi
     \vskip 0.5cm%
-    作者签名：\sysu@underline{}\hspace{2.7cm}%
-    导师签名：\sysu@underline{}\par
+    学位论文作者签名：\hspace{3cm}%
+    导师签名：\par
     \vskip 0.5cm%
-    签字日期：\sysu@underline{}\hspace{2.7cm}%
-    签字日期：\sysu@underline{}\par
+    日期：\hspace{1.1cm} 年 \hspace{0.7cm} 月 \hspace{0.7cm} 日\hspace{1.2cm}%
+    日期：\hspace{1.1cm} 年 \hspace{0.7cm} 月 \hspace{0.7cm} 日\par
     \ifsysu@reviewer@true
       \vskip 1.5cm%
       \hskip -1em%
@@ -2474,6 +2475,7 @@
     \pagestyle{plain}%
   \fi
   \sysu@chapter{\contentsname}%
+  \setcounter{tocdepth}{1}% 设置目录深度为1，即只显示到section （论文中的章 为 Chapter， 1.1 这种为 Section，上面的目录深度表示 section 的深度）
   \@starttoc{toc}%
 }
 
@@ -2493,9 +2495,9 @@
 % 带有序号的各级标题，其序号与题名之间均空一字符，行末右顶格。
 \ifsysu@degree@graduate
   \titlecontents{chapter}
-    [0bp]{\addvspace{6bp}\heiti\normalsize}
+    [0bp]{\addvspace{6bp}\songti\normalsize}
     {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
-    {\bfseries\normalsize\sysu@leaders\thecontentspage}
+    {\normalsize\sysu@leaders\thecontentspage}
     %
   \titlecontents{section}
     [1em]{\normalsize}
