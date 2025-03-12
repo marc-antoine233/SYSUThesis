@@ -569,9 +569,9 @@
 \newcommand\sysu@set@chapter@names{%
   \ifsysu@main@language@chinese
     \def\contentsname{目\hspace{2em} 录}%
-    \def\listfigurename{插图清单}%
-    \def\listtablename{附表清单}%
-    \def\sysu@list@figure@table@name{插图和附表清单}%
+    \def\listfigurename{插图目录}%
+    \def\listtablename{附表目录}%
+    \def\sysu@list@figure@table@name{插图和附表目录}%
     \ctexset{
       chapter/name   = {第,章},
     }%
@@ -1564,10 +1564,10 @@
 \fancypagestyle{plain}{%
   \fancyhf{}%
   %
-  % 页眉与该部分的章标题相同，宋体 10.5 磅（五号）居中。
-  % 页码：宋体 10.5 磅、页面下脚居中。
+  % 页眉与该部分的章标题相同，宋体 9 磅（小五号）居中。
+  % 页码：宋体 9 磅、页面下脚居中。
   \ifsysu@degree@graduate
-    \def\sysu@hf@font{\fontsize{10.5bp}{12bp}\selectfont}
+    \def\sysu@hf@font{\fontsize{9bp}{12bp}\selectfont}
     \fancyhead[C]{\sysu@hf@font\leftmark}%
     \fancyfoot[C]{\sysu@hf@font\thepage}%
     \let\@mkboth\markboth
@@ -1783,8 +1783,7 @@
     July\or August\or September\or October\or November\or December%
   \fi
 }
-%\newcommand\sysu@date@format@zh@short[3]{\number#1 年 \number#2 月}
-\newcommand\sysu@date@format@zh@short[3]{\zhdigits{#1}年\zhnumber{#2}月}
+\newcommand\sysu@date@format@zh@short[3]{\number#1 年 \number#2 月}
 \newcommand\sysu@date@format@en[3]{\sysu@date@month{#2} \number#3, #1}
 \newcommand\sysu@date@zh@small{\sysu@format@date{\sysu@date@format@zh@small}{\sysu@date}}
 \newcommand\sysu@date@zh@big{\sysu@format@date{\sysu@date@format@zh@big}{\sysu@date}}
@@ -2111,12 +2110,12 @@
     \vskip 0.5cm%
     日期：\hspace{1.1cm} 年 \hspace{0.7cm} 月 \hspace{0.7cm} 日\hspace{1.2cm}%
     日期：\hspace{1.1cm} 年 \hspace{0.7cm} 月 \hspace{0.7cm} 日\par
-    \ifsysu@reviewer@true
-      \vskip 1.5cm%
-      \hskip -1em%
-      评审专家签名：\sysu@underline{}\hspace{4.5em}%
-      评审专家签名：\sysu@underline{}\par
-    \fi
+%    \ifsysu@reviewer@true
+%      \vskip 1.5cm%
+%      \hskip -1em%
+%      评审专家签名：\sysu@underline{}\hspace{4.5em}%
+%      评审专家签名：\sysu@underline{}\par
+%    \fi
   \end{titlepage}%
   \sysu@title@pagetrue
   \cleardoublepage
@@ -2228,9 +2227,9 @@
   },
   %
   % 二级节标题，例如：“2.1.1  实验装置”。
-  % 采用黑体13pt字居左书写，固定行距20磅，段前12磅，段后6磅。
+  % 采用黑体小四号（12pt）字居左书写，固定行距20磅，段前12磅，段后6磅。
   subsection = {
-    format     = \heiti\fontsize{13bp}{20bp}\selectfont,
+    format     = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
     aftername  = \quad,
     beforeskip = 12bp,
     afterskip  = 6bp,
@@ -2239,7 +2238,7 @@
   % 三级节标题，例如：“2.1.1.1  实验结果”。
   % 采用黑体小四号（12pt）字居左书写，固定行距20磅，段前12磅，段后6磅。
   subsubsection = {
-    format     = \heiti\fontsize{12bp}{20bp}\selectfont,
+    format     = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
     aftername  = \quad,
     beforeskip = 12bp,
     afterskip  = 6bp,
@@ -2285,60 +2284,38 @@
 
 % 在研究生格式的基础上再设置本科生的章节标题格式。
 \ifsysu@degree@bachelor
-  \setcounter{secnumdepth}{4}
+  \setcounter{secnumdepth}{3}
   \ctexset{
   %
-  % 论文的致谢、目录、摘要和参考文献等标题用小二号（18 bp）黑体字，居中，
+  % 论文的致谢、目录、摘要和参考文献等标题用三号（16 bp）黑体字，居中，
   % 这通过 \cs{if@mainmatter} 区分。
   % 正文中的标题分章、节、段三级；章、节标题居中，段标题居左，
-  % 分别用三号（16 bp）黑体、小三（15 bp）黑体、四号（14 bp）黑体。
+  % 分别用三号（16 bp）黑体、四号（14 bp）黑体、小四号（12 bp）加粗宋体。
     chapter = {
       format = {
         \centering\sffamily
         \if@mainmatter
           \fontsize{16bp}{29.33bp}\selectfont
         \else
-          \fontsize{18bp}{33bp}\selectfont
+          \fontsize{16bp}{29.33bp}\selectfont
         \fi
       },
       titleformat = \sysu@spaced@title,
     },
     section = {
-      format = \centering\sffamily\fontsize{15bp}{27.5bp}\selectfont,
+      format = \sffamily\fontsize{14bp}{25.67bp}\selectfont,
     },
     subsection = {
-      format    = \sffamily\fontsize{14bp}{25.67bp}\selectfont,
-      indent    = 0bp,
+      format    = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+      indent    = 2em,
     },
     subsubsection = {
-      format    = \rmfamily\fontsize{12bp}{22bp}\selectfont,
-      number    = \arabic{subsubsection},
-      aftername = .\hspace{0.5em},
-      indent    = 1em,
-    },
-    paragraph = {
-      format    = \rmfamily\fontsize{12bp}{22bp}\selectfont,
+      format    = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+      number    = （\arabic{subsubsection}）,
       aftername = {},
-      indent    = 1em,
+      indent    = 2em,
     },
   }
-  %
-  % 本科生的阿拉伯数字式标题的格式与研究生几乎一致，只有中文数字式需要修改。
-  \ifsysu@section@style@arabic\else
-    \ctexset{
-      chapter = {
-        number = \chinese{chapter},
-      },
-      section = {
-        name   = {第,节},
-        number = \chinese{section},
-      },
-      subsection = {
-        number    = \chinese{subsection},
-        aftername = {、},
-      },
-    }
-  \fi
 \fi
 
 % 默认的 \cs{chapter*} 生成的章标题没有编号、不更改页眉，
@@ -2568,14 +2545,14 @@
 \sysu@option@hook{main-language}{\sysu@set@lof@format}
 \renewcommand\listoffigures{%
   \ifsysu@degree@graduate
-    \cleardoublepage
+    \clearpage
   \fi
   \sysu@chapter{\listfigurename}%
   \@starttoc{lof}%
 }
 \renewcommand\listoftables{%
   \ifsysu@degree@graduate
-    \cleardoublepage
+    \clearpage
   \fi
   \sysu@chapter{\listtablename}%
   \@starttoc{lot}%
@@ -2583,7 +2560,7 @@
 
 \newcommand\listoffiguresandtables{%
   \ifsysu@degree@graduate
-    \cleardoublepage
+    \clearpage
   \fi
   \sysu@chapter{\sysu@list@figure@table@name}%
   \@starttoc{lof}%
@@ -2702,24 +2679,24 @@
 
 % \subsection{浮动体}
 
-% 图题采用宋体，加粗，字号 11pt，居中书写，单倍行距，段前6磅，段后0磅，
+% 图题采用宋体，加粗，字号 10.5pt，居中书写，单倍行距，段前6磅，段后0磅，
 % 图序与图名之间空一个汉字符，
 
-% 表题置于表的上方，采用宋体，加粗，字号11pt，居中书写，单倍行距，段前6磅，段后0磅。
+% 表题置于表的上方，采用宋体，加粗，字号10.5pt，居中书写，单倍行距，段前6磅，段后0磅。
 % 表序与表名之间空一个汉字符。
 
-% 本科生：图全文要分别统一编号或按章编号，标题用小四宋体:
+% 本科生：图全文要分别统一编号或按章编号，标题用五号宋体:
 
 % 使用 \pkg{caption} 宏包设置图、表的格式：
 \DeclareCaptionFont{sysu}{\sysu@caption@font}
 \newcommand\sysu@caption@font{%
   \ifsysu@degree@bachelor
-    \fontsize{12bp}{14.4bp}\selectfont
+    \fontsize{10.5bp}{13.65bp}\selectfont
   \else
     \ifsysu@language@chinese
-      \fontsize{11bp}{14.3bp}\selectfont
+      \fontsize{10.5bp}{13.65bp}\selectfont
     \else
-      \fontsize{11bp}{12.65bp}\selectfont
+      \fontsize{10.5bp}{12.075bp}\selectfont
     \fi
   \fi
 }
@@ -2735,27 +2712,27 @@
   \captionsetup{font+=bf}
 \fi
 
-% 表单元格中的文字采用 11pt 宋体字，单倍行距，段前3磅，段后3磅。
-% 对于中文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (11pt * 1.3) ~= 1.42。
-% 对于英文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (11pt * 1.15) ~= 1.47。
+% 表单元格中的文字采用 12pt 宋体字，单倍行距，段前3磅，段后3磅。
+% 对于中文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (12pt * 1.3) ~= 1.38。
+% 对于英文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (12pt * 1.15) ~= 1.43。
 %
 % 本科生：表格内容用小四宋体或五号宋体选定某种样式后，全文应统一。
 \newcommand\sysu@table@font{%
   \ifsysu@degree@bachelor
     \ifsysu@language@chinese
-      \fontsize{10.5bp}{13.65bp}\selectfont
-      \renewcommand\arraystretch{1.44}%
+      \fontsize{12bp}{14.4bp}\selectfont
+      \renewcommand\arraystretch{1.38}%
     \else
-      \fontsize{10.5bp}{12.075bp}\selectfont
-      \renewcommand\arraystretch{1.5}%
+      \fontsize{12bp}{15bp}\selectfont
+      \renewcommand\arraystretch{1.38}%
     \fi
   \else
     \ifsysu@language@chinese
-      \fontsize{11bp}{14.3bp}\selectfont
-      \renewcommand\arraystretch{1.42}%
+      \fontsize{12bp}{14.4bp}\selectfont
+      \renewcommand\arraystretch{1.38}%
     \else
-      \fontsize{11bp}{12.65bp}\selectfont
-      \renewcommand\arraystretch{1.47}%
+      \fontsize{12bp}{14.4bp}\selectfont
+      \renewcommand\arraystretch{1.38}%
     \fi
   \fi
 }
@@ -3175,13 +3152,12 @@
   }%
   %
   % 参考文献列表格式：宋体 10.5 磅，行距 20 磅，续行缩进两字，左对齐。
-  % 本科生依然是小四宋体。
   \renewcommand\bibfont{%
-    \ifsysu@degree@graduate
+%    \ifsysu@degree@graduate
       \fontsize{10.5bp}{20bp}\selectfont
-    \else
-      \normalsize
-    \fi
+%    \else
+%      \normalsize
+%    \fi
   }
   \setlength{\bibsep}{0\p@ \@plus.2\p@}
   \renewcommand\@biblabel[1]{[#1]\hfill}
@@ -3198,11 +3174,11 @@
     \chapter{\bibname}%
   }
   \renewcommand\bibfont{%
-    \ifsysu@degree@graduate
+%    \ifsysu@degree@graduate
       \fontsize{10.5bp}{20bp}\selectfont
-    \else
-      \normalsize
-    \fi
+%    \else
+%      \normalsize
+%    \fi
   }
   \setlength{\bibitemsep}{0\p@ \@plus.2\p@}
   \setlength{\bibhang}{2em}
