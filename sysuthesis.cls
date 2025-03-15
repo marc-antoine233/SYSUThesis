@@ -1607,7 +1607,7 @@
 \def\ps@chapter{}
 \ctexset{chapter/pagestyle=chapter}
 
-% 空白页不需加页眉（包括页眉线），但需有连续编的页码。
+% 空白页不需加页眉（包括页眉线），也不需要有页码。
 \fancypagestyle{blank}{%
   \fancyhf{}%
   \renewcommand\headrulewidth{0pt}%
