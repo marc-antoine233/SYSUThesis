@@ -1541,24 +1541,34 @@
 % 纸张：A4；
 
 % 纸张大小：标准A4（21.0cm×29.7cm）尺寸。
-% 页边距：上、下、左、右、装订线的页边距分别为：2.54cm，2.54cm，3.17cm，3.17cm，0cm。装订线位置：左。左右对称页边距。
+% 页边距：研究生：上、下、左、右、装订线的页边距分别为：2.54cm，2.54cm，3.17cm，3.17cm，0cm。装订线位置：左。左右对称页边距。
+% 本科生：上、下、左、右、装订线的页边距分别为：2.5cm，2.0cm，3.0cm，3.0cm，0cm。装订线位置：左。左右对称页边距。
 % 页眉距边界2.0cm
 % 页脚距边界1.75cm
 % Word 模板中，页眉线是跟版心上边缘重合的，所以 headsep 设为 1pt，防止页眉线与版心内容重叠（#413）。
-\geometry{
-  paper      = a4paper,
-  vmargin    = 2.54cm,
-  hmargin    = 3.17cm,
-  headheight = 0.53cm,
-  headsep    = 0.2cm,
-  footskip   = 0.79cm,
-}
+\ifsysu@degree@graduate
+  \geometry{
+    paper      = a4paper,
+    vmargin    = 2.54cm,
+    hmargin    = 3.17cm,
+    headheight = 0.53cm,
+    headsep    = 0.25cm,
+    footskip   = 0.79cm,
+  }
+\else
+  \geometry{
+  	paper      = a4paper,
+  	top        = 2.5cm,
+  	bottom     = 2.0cm,
+  	hmargin    = 3.0cm,
+  }
+\fi
 
 % 使用 \pkg{fancy} 需要先调用 |\pagestyle{fancy}| 再修改 \cs{chaptermark} 和
 % \cs{sectionmark}。
 \pagestyle{fancy}
 \let\sectionmark\@gobble
-\renewcommand\headrulewidth{0.4\p@}
+\renewcommand\headrulewidth{0.5\p@}
 
 % 重定义默认的 |plain| page style，会显示页眉和页脚。
 \fancypagestyle{plain}{%
@@ -1601,7 +1611,7 @@
 \fancypagestyle{blank}{%
   \fancyhf{}%
   \renewcommand\headrulewidth{0pt}%
-  \fancyfoot[C]{\sysu@hf@font\thepage}%
+%  \fancyfoot[C]{\sysu@hf@font\thepage}%
 }
 
 \newif\ifsysu@title@page
@@ -1954,7 +1964,6 @@
     
     % 做分割线
     \noindent\makebox[\linewidth]{ { \color{sysugreen} \rule{\paperwidth}{0.12cm} } }
-    % \noindent\makebox[\linewidth]{ { \color{sysugreen} \rule[1.05cm]{\paperwidth}{0.05cm} } }
     \noindent\makebox[\linewidth]{ { \color{sysugreen} \rule[0.8\baselineskip]{\paperwidth}{0.05cm} } }
     
     \ \vskip 1.5cm%
@@ -2652,6 +2661,9 @@
   \noindent
   \hb@xt@ 2em{\hss\@makefnmark}#1}
 
+%\renewcommand{\thefigure}{\thechapter-\arabic{figure}}% 将正文和目录的图片标题由x.x改为x-x，慎用
+%\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}% 将正文和目录的表格标题由x.x改为x-x，慎用
+%\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}% 将正文的公式序号由(x.x)改为(x-x)，慎用
 
 % \subsection{列表}
 % \label{sec:list}
@@ -2707,8 +2719,17 @@
   skip           = 6bp,
   figureposition = bottom,
   tableposition  = top,
+  justification  = centering,
 }
+% 设置中英文图/表题供研究生论文选用
 \ifsysu@degree@graduate
+  \RequirePackage[list=off]{bicaption}
+  \DeclareCaptionOption{bi-first}[]{}% 设置第一种语言的图/表题
+  \DeclareCaptionOption{bi-second}[]{% 设置第二种语言的图/表题
+  	\sysusetup{language=english}
+  }
+  \captionsetup[bi-first]{bi-first}%
+  \captionsetup[bi-second]{bi-second}%
   \captionsetup{font+=bf}
 \fi
 
@@ -2753,7 +2774,7 @@
 }
 
 % 图注、表注使用 `\figurenote` 或 `\tablenote` 命令，与 `apa7.cls` 一致。
-% 图注采用宋体 11pt，单倍行距，段前6磅，段后0磅。
+% 图注采用宋体 10.5pt，单倍行距，段前6磅，段后0磅。
 % 多个图注则须顺序编号，注序左缩进2字，与注文之间空一字符，续行悬挂缩进左对齐，两端对齐。
 \newcommand\sysu@figure@note@font{%
   \ifsysu@degree@bachelor
@@ -3429,6 +3450,7 @@
   \SetAlCapSkip{6bp}
   \SetAlCapFnt{\small}
   \SetAlCapNameFnt{\small}
+%  \renewcommand{\thealgocf}{\arabic{chapter}-\arabic{algocf}}% 将算法标题由x.x改为x-x，慎用
   \ifsysu@degree@graduate
     \SetAlCapNameSty{textbf}
   \fi
