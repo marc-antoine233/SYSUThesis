@@ -1728,6 +1728,9 @@
   keywords* = {
     name    = keywords@en,
   },
+  keywords** = {
+  	name     = keywords@fr,
+  },
 }
 
 % 导师一栏可能有多个姓名，所以用 \opt{supervisor} 进行收集，
@@ -1822,6 +1825,7 @@
 \sysu@define@term{secretyear}{secret-year}
 \gdef\keywords#1{\renewcommand\sysu@keywords@text{#1}}
 \gdef\enkeywords#1{\renewcommand\sysu@keywords@en@text{#1}}
+\gdef\frkeywords#1{\renewcommand\sysu@keywords@fr@text{#1}}
 
 % 定义一些常量。
 \ifsysu@degree@doctor
@@ -2347,6 +2351,13 @@
     \sysu@clist@use{\sysu@keywords@en}{; }%
   \fi
 }
+
+\ifsysu@degree@bachelor
+\newcommand\sysu@keywords@fr@text{%
+  \sysu@clist@use{\sysu@keywords@fr}{; }%
+}
+\fi
+
 \newenvironment{abstract}{%
   \sysusetup{language=chinese}%
   \ifsysu@degree@graduate
@@ -2430,6 +2441,29 @@
   \fi
   \sysu@reset@main@language
 }
+
+
+% 法语摘要环境，适用于中法核工程与技术学院本科论文中文、英文、法语三语摘要
+\ifsysu@degree@bachelor
+  \newenvironment{abstract**}{%
+	\sysusetup{language=english}%
+
+	\begingroup
+	% 本科生的英文摘要使用小二号衬线体
+	\ctexset{chapter/format=\centering\bfseries\fontsize{16bp}{33bp}\selectfont}%
+	\sysu@chapter{[ABSTRACT]}%
+	\endgroup
+  }{
+	\par\null\par\noindent
+	\renewcommand\sysu@keywords@label{Mots-clés }%
+	\savebox\sysu@keywords@box{\textbf{\sysu@keywords@label}: }%
+	\sysu@keywords@width=\linewidth
+	\advance\sysu@keywords@width-\wd\sysu@keywords@box
+	\textbf{\sysu@keywords@label}: \parbox[t]{\sysu@keywords@width}{\sysu@keywords@fr@text\par}\par
+	\newpage
+	\sysu@reset@main@language
+}
+\fi
 
 % Reserved for compatibility until 2020-07-01.
 %\newenvironment{enabstract}{%
@@ -2646,10 +2680,6 @@
   \parindent=2em\relax
   \noindent
   \hb@xt@ 2em{\hss\@makefnmark}#1}
-
-%\renewcommand{\thefigure}{\thechapter-\arabic{figure}}% 将正文和目录的图片标题由x.x改为x-x，慎用
-%\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}% 将正文和目录的表格标题由x.x改为x-x，慎用
-%\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}% 将正文的公式序号由(x.x)改为(x-x)，慎用
 
 % \subsection{列表}
 % \label{sec:list}
@@ -3436,7 +3466,6 @@
   \SetAlCapSkip{6bp}
   \SetAlCapFnt{\small}
   \SetAlCapNameFnt{\small}
-%  \renewcommand{\thealgocf}{\arabic{chapter}-\arabic{algocf}}% 将算法标题由x.x改为x-x，慎用
   \ifsysu@degree@graduate
     \SetAlCapNameSty{textbf}
   \fi

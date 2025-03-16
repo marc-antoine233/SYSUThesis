@@ -27,6 +27,9 @@
   cite-style           = super,
 }
 
+%\renewcommand{\thefigure}{\thechapter-\arabic{figure}}% 将正文和目录的图片标题由x.x改为x-x，慎用
+%\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}% 将正文和目录的表格标题由x.x改为x-x，慎用
+%\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}% 将正文的公式序号由(x.x)改为(x-x)，慎用
 
 % 加载宏包
 
@@ -47,6 +50,7 @@
 
 % 算法
 \usepackage[ruled,linesnumbered]{algorithm2e}
+%\renewcommand{\thealgocf}{\arabic{chapter}-\arabic{algocf}}% 将算法标题由x.x改为x-x，慎用
 
 % SI 量和单位
 \usepackage{siunitx}
