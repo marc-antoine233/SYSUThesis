@@ -3296,6 +3296,9 @@
     bookmarksnumbered  = true,
     bookmarksopen      = true,
     bookmarksopenlevel = 1,
+% 书签到二级节（x.x.x），方便编译时浏览
+%    bookmarksopenlevel = 2,
+    bookmarksdepth     = 2,
     linktoc            = all,
     unicode            = true,
     psdextra           = true,
