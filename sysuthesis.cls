@@ -2449,7 +2449,7 @@
 	\sysusetup{language=english}%
 
 	\begingroup
-	% 本科生的英文摘要使用小二号衬线体
+	% 中法核本科生的法语摘要使用三号衬线体
 	\ctexset{chapter/format=\centering\bfseries\fontsize{16bp}{33bp}\selectfont}%
 	\sysu@chapter{[ABSTRACT]}%
 	\endgroup
