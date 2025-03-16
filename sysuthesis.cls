@@ -630,7 +630,7 @@
 %     \cs{scriptsize}   & 六号 & 7.5  & 12.5       & 13.75      \\
 %     \cs{footnotesize} & 小五 & 9    & 15         & 16.5       \\
 %     \cs{small}        & 五号 & 10.5 & 17.5       & 19.25      \\
-%     \cs{normalsize}   & 小四 & 12   & 20         & 22         \\
+%     \cs{normalsize}   & 小四 & 12   & 21         & 21         \\
 %     \cs{large}        & 小三 & 15   & 25         & 27.5       \\
 %     \cs{Large}        & 小二 & 18   & 30         & 33         \\
 %     \cs{LARGE}        & 二号 & 22   & 36.67      & 40.33      \\
@@ -644,7 +644,7 @@
 \newcommand\sysu@set@font@size{%
 %  \ifsysu@degree@graduate
     \renewcommand\normalsize{%
-      \@setfontsize\normalsize{12bp}{20bp}%
+      \@setfontsize\normalsize{12bp}{21bp}%
       \abovedisplayskip 12bp \@plus3bp \@minus7bp%
       \abovedisplayshortskip 0bp \@plus3bp%
       \belowdisplayshortskip 6.5bp \@plus3.5bp \@minus3bp%
@@ -654,7 +654,7 @@
     % 注意第~\ref{sec:list} 节去掉了列表的间距，所以不再修改 \cs{@listi}。
 %  \else
 %    \renewcommand\normalsize{%
-%      \@setfontsize\normalsize{12bp}{22bp}%
+%      \@setfontsize\normalsize{12bp}{21bp}%
 %      \abovedisplayskip 12bp \@plus3bp \@minus7bp%
 %      \abovedisplayshortskip 0bp \@plus3bp%
 %      \belowdisplayshortskip 6.5bp \@plus3.5bp \@minus3bp%
@@ -1589,7 +1589,6 @@
     %
     % 本科生要求除封面、扉页外，每面上部加页眉，
     % 用小 5 号字（9 bp）标注“中山大学本科毕业论文”，居中；
-    % 从目录页开始在每面底部居中用小五宋体（9 bp）连续编页码。
     \def\sysu@hf@font{\fontsize{9bp}{12bp}\selectfont}
     \fancyhead[C]{\sysu@hf@font 中山大学本科毕业论文}%
     \fancyfoot[C]{\sysu@hf@font\thepage}%
@@ -1637,27 +1636,18 @@
 }
 
 %
-% 研究生要求从“中文摘要”开始页码用大写罗马数字，
-% 而本科生的 frontmatter（只有致谢）不编页码，从目录开始页码用阿拉伯数字。
+% 从“中文摘要”开始页码用大写罗马数字。
 \renewcommand\frontmatter{%
-  \cleardoublepage
-  \@mainmatterfalse
-  \pagenumbering{Roman}%
-  \ifsysu@degree@graduate
-    \pagestyle{plain}%
-  \else
-    \pagestyle{headings}%
-  \fi
+	\cleardoublepage
+	\@mainmatterfalse
+	\pagenumbering{Roman}%
+	\pagestyle{plain}%
 }
 
-% 研究生要求“第 1 章”要另页起，但是本科生要求另面起。
+% “第 1 章”要另页起。
 \renewcommand\mainmatter{%
-  \ifsysu@degree@graduate
     \cleardoublepage
     \pagenumbering{arabic}%
-  \else
-    \clearpage
-  \fi
   \pagestyle{plain}%
   \@mainmattertrue
 }
@@ -2452,14 +2442,10 @@
 
 % \subsection{目录}
 
-% 研究生规定目录另面起；
-% 本科生规定从目录开始编页码，所以必须另页起。
+% 目录另面起；
 \renewcommand\tableofcontents{%
-  \ifsysu@degree@bachelor
-    \cleardoublepage
-    \pagenumbering{arabic}%
-    \pagestyle{plain}%
-  \fi
+  \cleardoublepage
+  \pagestyle{plain}%
   \sysu@chapter{\contentsname}%
   \setcounter{tocdepth}{1}% 设置目录深度为1，即只显示到section （论文中的章 为 Chapter， 1.1 这种为 Section，上面的目录深度表示 section 的深度）
   \@starttoc{toc}%
