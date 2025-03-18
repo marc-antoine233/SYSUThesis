@@ -2,7 +2,6 @@
 
 [![GitHub release](https://img.shields.io/github/release/1FCENdoge/SYSUThesis/all.svg)](https://github.com/1FCENdoge/SYSUThesis/releases/latest)
 [![GitHub commits](https://img.shields.io/github/commits-since/1FCENdoge/SYSUThesis/latest.svg)](https://github.com/1FCENdoge/SYSUThesis/commits/main/)
-[![Build]]
 
 本项目是中山大学的毕业论文/设计 LaTeX 模板 sysuthesis，基于中国科学技术大学学位论文LaTeX模板开发，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。
 
