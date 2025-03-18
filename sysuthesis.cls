@@ -2164,8 +2164,8 @@
 
 % \subsection{章节标题}
 
-% 标题最多允许使用五级。
-\setcounter{secnumdepth}{5}
+% 标题最多允许使用四级。
+\setcounter{secnumdepth}{4}
 
 % 本科生章题为两字时中间空一字，三字时空半字，四字及以上不空。
 % 这里用 \LaTeX3 的 \cs{\str_count:N} 判断字数。
@@ -2186,7 +2186,7 @@
   \endgroup
 }
 
-% 五级节标题和脚注需要使用带圈的数字，这里使用 \cs{sysu@circlefont} ：
+% 四级节标题和脚注需要使用带圈的数字，这里使用 \cs{sysu@circlefont} ：
 \newcommand\sysu@textcircled[1]{%
   \ifnum\value{#1}<21\relax
     {\symbol{\numexpr\value{#1} + "245F\relax}}%
@@ -2205,7 +2205,7 @@
 % 另外 \pkg{ctex} v2.2 前的beforeskip的符号有特殊意义。
 \ctexset{
   chapter = {
-    format      = \centering\heiti\fontsize{16bp}{20.8bp}\selectfont,
+    format      = \centering\heiti\fontsize{16bp}{21.8bp}\selectfont,
     nameformat  = {},
     titleformat = {},
     number      = \thechapter,
@@ -2220,55 +2220,47 @@
 % 节编号用阿拉伯数字表示，前边数字为上级章节的序号，后一数字为本节的顺序号。
 % 数字间用半角小数点“.”连接。
 % 节标题序号与标题名之间空一个汉字符（下同）。
-% 采用黑体四号（14pt）字居左书写，固定行距20磅，段前24磅，段后6磅。
+% 采用黑体四号（14pt）字居左书写，固定行距21磅，段前24磅，段后6磅。
 \ctexset{
   section = {
-    format     = \heiti\fontsize{14bp}{20bp}\selectfont,
+    format     = \heiti\fontsize{14bp}{21bp}\selectfont,
     aftername  = \quad,
     beforeskip = 24bp,
     afterskip  = 6bp,
   },
   %
   % 二级节标题，例如：“2.1.1  实验装置”。
-  % 采用黑体小四号（12pt）字居左书写，固定行距20磅，段前12磅，段后6磅。
+  % 采用宋体小四号（12pt）字居左书写，固定行距21磅，段前12磅，段后6磅。
   subsection = {
-    format     = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+    format     = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
     aftername  = \quad,
     beforeskip = 12bp,
     afterskip  = 6bp,
   },
   %
-  % 三级节标题，例如：“2.1.1.1  实验结果”。
-  % 采用黑体小四号（12pt）字居左书写，固定行距20磅，段前12磅，段后6磅。
+  % 三级节标题，例如：“（1）实验结果”。
+  % 采用宋体小四号（12pt）字居左书写，固定行距21磅，段前12磅，段后6磅。
   subsubsection = {
-    format     = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-    aftername  = \quad,
-    beforeskip = 12bp,
-    afterskip  = 6bp,
+    format     = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
+	number     = （\arabic{subsubsection}）,
+	aftername  = \hspace{0em},
+	indent     = 0em,
+	beforeskip = 0bp,
+	afterskip  = 0bp,
+	runin      = false,
   },
   %
-  % 按照 Word 模板的格式，四级节标题：宋体 12 磅，左缩进两字，行距 20 磅，
+  % 一般用不到三级节以下的标题，但此处还是保留四级节标题备用。
+  % 四级节标题：宋体 12 磅，左缩进两字，行距 21 磅，
   % 段前段后 0 磅，序号使用全宽括号，与题名间空半字宽。
   paragraph = {
-    format     = \rmfamily\fontsize{12bp}{20bp}\selectfont,
-    number     = （\arabic{paragraph}）,
-    aftername  = \hspace{0.5em},
-    indent     = 2em,
-    beforeskip = 0bp,
-    afterskip  = 0bp,
-    runin      = false,
-  },
-  %
-  % 按照 Word 模板的格式，五级节标题：宋体 12 磅，左缩进两字，行距 20 磅，
-  % 段前段后 0 磅，序号使用全宽括号，与题名间空半字宽。
-  subparagraph = {
-    format     = \rmfamily\fontsize{12bp}{20bp}\selectfont,
-    number     = \sysu@textcircled{subparagraph},
-    aftername  = \hspace{0.5em},
-    indent     = 2em,
-    beforeskip = 0bp,
-    afterskip  = 0bp,
-    runin      = false,
+    format     = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
+	number     = \sysu@textcircled{paragraph},
+	aftername  = \hspace{0.5em},
+	indent     = 0.5em,
+	beforeskip = 0bp,
+	afterskip  = 0bp,
+	runin      = false,
   },
 }
 
@@ -2308,16 +2300,14 @@
     section = {
       format = \sffamily\fontsize{14bp}{25.67bp}\selectfont,
     },
-    subsection = {
-      format    = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-      indent    = 2em,
-    },
-    subsubsection = {
-      format    = \rmfamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-      number    = （\arabic{subsubsection}）,
-      aftername = {},
-      indent    = 2em,
-    },
+%    subsection = {
+%      format    = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
+%    },
+%    subsubsection = {
+%      format    = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
+%      number    = （\arabic{subsubsection}）,
+%      aftername = {},
+%    },
   }
 \fi
 

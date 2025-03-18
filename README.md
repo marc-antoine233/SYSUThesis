@@ -1,18 +1,14 @@
 # 中山大学毕业论文/设计 LaTeX 模板（本科/研究生）（试用）
 
-[![GitHub release](https://img.shields.io/github/release/ustctug/ustcthesis/all.svg)](https://github.com/ustctug/ustcthesis/releases/latest)
-[![GitHub commits](https://img.shields.io/github/commits-since/ustctug/ustcthesis/latest.svg)](https://github.com/ustctug/ustcthesis/commits/master)
-[![Build](https://github.com/ustctug/ustcthesis/actions/workflows/main.yml/badge.svg)](https://github.com/ustctug/ustcthesis/actions/workflows/main.yml)
+[![GitHub release](https://img.shields.io/github/release/1FCENdoge/SYSUThesis/all.svg)](https://github.com/1FCENdoge/SYSUThesis/releases/latest)
+[![GitHub commits](https://img.shields.io/github/commits-since/1FCENdoge/SYSUThesis/latest.svg)](https://github.com/1FCENdoge/SYSUThesis/commits/main/)
+[![Build]]
 
-本项目是中山大学的毕业论文/设计 LaTeX 模板 sysuthesis，按照
-研究生《[学位论文撰写模板](https://gradschool.ustc.edu.cn/column/65)》（2024-12-05）
-和
-《[中国科学技术大学本科毕业论文（设计）格式](https://www.teach.ustc.edu.cn/?attachment_id=13867)》
-的要求编写，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。
+本项目是中山大学的毕业论文/设计 LaTeX 模板 sysuthesis，基于中国科学技术大学学位论文LaTeX模板开发，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。
 
 注意：
 
-1. 使用说明文档 `ustcthesis-doc.pdf` 在发布版中附带，用户也可自行编译；**使用模板前应仔细阅读**。
+1. 使用说明文档 `sysuthesis-guide.pdf` 在发布版中附带，用户也可自行编译；**使用模板前应仔细阅读**。
 
 2. 本模板要求 TeX Live、MacTeX、MiKTeX 不低于 2017 年的发行版，
 并且尽可能升级到最新。安装和升级方法见
@@ -24,17 +20,6 @@
 ## 下载地址
 
 - GitHub Releases：<https://github.com/ustctug/ustcthesis/releases>
-
-- 校内镜像：<https://git.lug.ustc.edu.cn/ustctug/ustcthesis>
-
-- TexPage 模板 <https://texpage.com/template/fe69d6fc-f811-4b8c-824f-7848a07c9551>
-
-- LoongTeX <https://www.loongtex.com/>
-
-- Overleaf 模板 <https://www.overleaf.com/latex/templates/latex-template-for-ustc-thesis/qbfkwzbrfhbr>
-
-- 研究生院网站（版本较旧，不推荐）：<https://gradschool.ustc.edu.cn/column/65>
-
 
 ## 编译文档
 
