@@ -5,8 +5,8 @@ BSTFILES = $(NAME)-numerical.bst $(NAME)-authoryear.bst $(NAME)-bachelor.bst
 
 SHELL = bash
 LATEXMK = latexmk -xelatex
-VERSION = $(shell cat $(NAME).cls | egrep -o "\\ustcthesisversion{v[0-9.]+" \
-	  | egrep -o "v[0-9.]+")
+# VERSION = $(shell cat $(NAME).cls | egrep -o "\\ustcthesisversion{v[0-9.]+" \
+# 	  | egrep -o "v[0-9.]+")
 TEXMF = $(shell kpsewhich --var-value TEXMFHOME)
 
 .PHONY : main cls doc clean all install distclean zip FORCE_MAKE
@@ -42,6 +42,6 @@ zip : main doc
 	ln -sf . $(NAME)
 	zip -r ../$(NAME)-$(VERSION).zip $(NAME)/{*.md,LICENSE,\
 	$(NAME)-guide.tex,$(NAME)-guide.pdf,$(NAME).cls,*.bst,*.bbx,*.cbx,figures,\
-	$(MAIN).tex,ustcsetup.tex,chapters,bib,$(MAIN).pdf,\
+	$(MAIN).tex,sysusetup.tex,chapters,bib,$(MAIN).pdf,\
 	latexmkrc,Makefile}
 	rm $(NAME)

@@ -1836,7 +1836,7 @@
     \newcommand\sysu@thesis@name{中山大学硕士学位论文}
     \newcommand\sysu@thesis@name@en{A dissertation for master's degree}
   \else
-    \newcommand\sysu@thesis@name{学士学位论文}
+    \newcommand\sysu@thesis@name{本科生毕业论文（设计）}
     \newcommand\sysu@thesis@name@en{A dissertation for bachelor's degree}
   \fi
 \fi
@@ -1952,7 +1952,7 @@
     \vskip 0.5cm%
     \includegraphics[width=3cm]{figures/sysu-logo.pdf}
     \vskip 1.2cm%
-                {\zihao{-0}\textcolor{sysugreen}{\rmfamily\textbf{\ 本科生毕业论文（设计）}}}
+      {\zihao{-0}\textcolor{sysugreen}{\rmfamily\textbf{\ \sysu@thesis@name}}}
     
     \vskip 1.2cm%
     
