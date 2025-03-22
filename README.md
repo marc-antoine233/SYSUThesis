@@ -3,7 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/1FCENdoge/SYSUThesis/all.svg)](https://github.com/1FCENdoge/SYSUThesis/releases/latest)
 [![GitHub commits](https://img.shields.io/github/commits-since/1FCENdoge/SYSUThesis/latest.svg)](https://github.com/1FCENdoge/SYSUThesis/commits/main/)
 
-本项目是中山大学的毕业论文/设计 LaTeX 模板 sysuthesis，基于中国科学技术大学学位论文LaTeX模板开发，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。由于学校规定的研究生论文格式过于粗糙，部分格式参照中科大研究生论文格式进行设定。
+本项目是中山大学的毕业论文/设计 LaTeX 模板 sysuthesis，基于中国科学技术大学学位论文LaTeX模板开发，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。由于学校规定的研究生论文格式过于粗糙，部分格式参照中科大研究生论文格式进行设定，并且将本科和研究生的部分格式统一。
 
 注意：
 
@@ -54,7 +54,7 @@
 
 如果发现模板有问题，请按照以下步骤操作：
 
-1. 阅读学校的标准，判断是否符合学校的要求；
+1. 阅读学校的标准，判断是否符合学校的要求：[本科生论文规范](https://lingnan.sysu.edu.cn/undergraduateprogram/node/753)；- [研究生论文规范](https://graduate.sysu.edu.cn/sites/default/files/2019-04/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%BD%8D%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82.pdf)；
 2. 阅读 [常见问题 FAQ](https://github.com/ustctug/ustcthesis/wiki/常见问题)；
 3. 将 TeX 发行版和宏包升级到最新，并且将模板升级到 Github 上最新版本，
 查看问题是否已经修复；

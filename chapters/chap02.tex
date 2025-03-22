@@ -22,6 +22,43 @@
   \end{tabular}
 \end{table}
 
+\begin{table}[h] %voc table result
+	\centering
+	\caption{十分复杂的表格}
+	\begin{tabular}{*{5}{c}}
+		\toprule
+		区域 & \tabincell{c}{外侧核热功率\\（MW）} & \tabincell{c}{内侧核热功率\\（MW）} & 结构 & \tabincell{c}{结构核热功率\\（MW）} \\
+		\midrule
+		第一壁涂层 & 20.0 & 13.4 & \multirow{2}{*}{第一壁} & \multirow{2}{*}{151.7} \\
+		第一壁结构层 & 70.2 & 48.1 & ~ & ~ \\
+		\midrule
+		Be-1区 & 37.9 & 26.5 & \multirow{8}{*}{氚增殖区} & \multirow{8}{*}{970.2} \\ 
+		Li$ _{\text{4}} $SiO$ _{\text{4}} $-1区 & 126.7 & 86.8 & ~ & ~ \\
+		Be-2区 & 133.6 & 94.1 & ~ & ~ \\
+		Li$ _{\text{4}} $SiO$ _{\text{4}} $-2区 & 134.4 & 96.2 & ~ & ~ \\
+		Be-3区 & 68.6 & 49.7 & ~ & ~ \\
+		Li$ _{\text{4}} $SiO$ _{\text{4}} $-3区 & 49.6 & 37.2 & ~ & ~ \\
+		Be-4区 & 9.2 & 7.0 & ~ & ~ \\
+		增殖区后支撑 & 7.1 & 5.5 & ~ & ~ \\
+		\midrule
+		屏蔽区（水） & 6.8 & 5.4 & \multirow{2}{*}{屏蔽区} & \multirow{2}{*}{18.2} \\
+		屏蔽区（钢） & 3.3 & 2.7 & ~ & ~ \\
+		\midrule
+		总计 & 667.5 & 472.6 & - & 1140.1 \\
+		\bottomrule
+	\end{tabular}
+	\label{nucheat_tot}
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{从csv文件中导入表格}
+	\begin{adjustbox}{max width=\linewidth}
+	\csvautobooktabular{tables/asterids.csv}
+	\end{adjustbox}
+	\label{tab:asterid}
+\end{table}
+
 如果有表注，推荐使用 \pkg{threeparttable}。这样可以与表格对齐，满足部分评审老师的要求。
 
 \begin{table}
@@ -60,7 +97,7 @@
 而且每次编译时都要要调用外部工具解析 eps，导致降低编译速度。
 所以我们推荐矢量图直接使用 pdf 格式，位图使用 jpeg 或 png 格式。
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{confusion.pdf}
   \caption{图号、图题置于图的下方}

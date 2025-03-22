@@ -425,6 +425,7 @@
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{fancyhdr}
+\RequirePackage{booktabs}
 \RequirePackage{color}
 \RequirePackage{titletoc}
 \RequirePackage{caption}
@@ -432,7 +433,10 @@
 \RequirePackage[perpage]{footmisc}
 \RequirePackage{url}
 \RequirePackage{notoccite}
+\RequirePackage{makecell}
 \RequirePackage{multirow}
+\RequirePackage{csvsimple-l3} % 从 CSV 中自动导入表格
+\RequirePackage{adjustbox}
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
 %\RequirePackage{titlesec}
 
@@ -1941,7 +1945,6 @@
   \sysu@reset@main@language
 }
 
-
 \newbox\sysu@title@box
 
 % 本科生的外封
@@ -2049,7 +2052,6 @@
   \sysu@title@pagetrue
   \ifsysu@degree@graduate
     \sysu@title@page@graduate@zh
-%    \sysu@title@page@graduate@en
   \else
   	\sysu@cover
     \sysu@title@page@bachelor
@@ -2739,6 +2741,9 @@
   \captionsetup{font+=bf}
 \fi
 
+% 设置三线表顶部和底部横线宽度
+\setlength\heavyrulewidth{1.5pt}
+
 % 表单元格中的文字采用 12pt 宋体字，单倍行距，段前3磅，段后3磅。
 % 对于中文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (12pt * 1.3) ~= 1.38。
 % 对于英文，`\arraystretch` 需要设为 1 + (3pt + 3pt) / (12pt * 1.15) ~= 1.43。
@@ -2778,6 +2783,8 @@
     \fi
   }
 }
+% 对较为复杂的、需要在表格内拆分单元格的表格使用
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 % 图注、表注使用 `\figurenote` 或 `\tablenote` 命令，与 `apa7.cls` 一致。
 % 图注采用宋体 10.5pt，单倍行距，段前6磅，段后0磅。

@@ -111,9 +111,9 @@
 
 
 \title{\cls{sysuthesis} 使用说明}
-\author{1FCENdoge\and
-        Zeping Lee\thanks{zepinglee AT gmail.com} }
-\date{v2.0.0-alpha1\qquad 2025-03-18}
+\author{1FCENdoge\thanks{Sino-French Institute of Nuclear Engineering and Technology, Sun Yat-sen University}\and
+        Zeping Lee\thanks{School of Mathematical Sciences, USTC} }
+\date{\today}
 \maketitle
 
 
@@ -122,28 +122,23 @@
 
 本模板 \cls{sysuthesis} 是中山大学本科生和研究生学位论文的 \LaTeX{}
 模板，参照中国科学技术大学学位论文 \LaTeX{}
-模板编辑得到， 按照《中国科学技术大学研究生学位论文撰写手册》（最近在修订中）和
-《\href{https://www.teach.ustc.edu.cn/?attachment_id=13867}
-{中国科学技术大学本科毕业论文（设计）格式}》的要求编写。
+模板编辑得到，部分格式参照中科大本科、研究生论文格式，
+再将中山大学本科和研究生部分论文格式进行统一。
 
-其前身是中国科学技术大学本科论文模板（作者 XPS，最后维护 ywg）
-和中国科学技术大学研究生论文模板（作者 Liuqs，主要维护 Liuqs、Guolicai）。
-后来两模板进行了整合梳理，由 ywg 维护。
-2015 年，seisman 和 zepinglee 基于 \pkg{ctex} 2.0 重新编写了模板。
-2017 年，随着学校发布了新版的《撰写手册》，本模板也更新到 v3.0。
+本模板主要依据中山大学 LaTeX 论文项目模板（wu-kan 维护）、
+中山大学毕业论文模板（huangjj27 开发）以及本人的中山大学研究生学位论文 LaTeX 模板（试用）编写，
+本人于2025年3月将几个模板整合梳理，新模板支持本科和研究生论文一键切换。
+LaTeX PPT 模板目前由 wu-kan 制作中：\url{https://github.com/SYSU-SCC/sysu-thesis}
 
 下载地址：
 \begin{itemize}
-  \item 主要地址：\url{https://github.com/ustctug/ustcthesis/releases}
-  \item 学校镜像：\url{https://git.lug.ustc.edu.cn/ustctug/ustcthesis}
-  \item 研究生院网站（版本较旧）：
-    \url{https://gradschool.ustc.edu.cn/column/65}
+  \item 主要地址：\url{https://github.com/1FCENdoge/SYSUThesis/releases}
 \end{itemize}
 
-用户在使用 \pkg{ustcthesis} 模板前，应先阅读学校的《撰写手册》等规范。
+用户在使用 \pkg{sysuthesis} 模板前，应先了解学校对论文写作的要求。
 如果在使用的过程中遇到问题，可以阅读
-\href{https://github.com/ustctug/ustcthesis/wiki}{常见问题}，
-或者在 \href{https://github.com/ustctug/ustcthesis/issues}{GitHub Issues}
+\href{https://github.com/ustctug/sysuthesis/wiki}{常见问题}，
+或者在 \href{https://github.com/1FCENdoge/SYSUThesis/issues}{GitHub Issues}
 中反馈。
 
 
@@ -162,8 +157,8 @@
     类别     & 文件                      & 说明                         \\
     \midrule
     模板文件 & \file{sysuthesis.cls}     & 模板文件                     \\
-             & \file{sysuthesis-*.bst}   & \BibTeX{} 参考文献表格式     \\
-             & \file{figures/sysu-*.pdf} & 校名和校徽图片               \\
+             & \file{sysuthesis-numerical.bst}   & \BibTeX{} 参考文献表格式     \\
+             & \file{figures/sysu*.pdf} & 校徽图片               \\
     \midrule
     使用说明 & \file{sysuthesis-guide.tex} & 模板使用说明的源代码         \\
              & \file{sysuthesis-guide.pdf} & （你正在阅读的）模板使用说明 \\
@@ -172,10 +167,10 @@
              & \file{sysusetup.tex}      & 配置文件                     \\
              & \file{chapters/*.tex}     & 示例文档的各个章节           \\
              & \file{figures/}           & 放置图片的目录               \\
+             & \file{tables/}            & 放置表格的目录               \\
              & \file{reference.bib}       & \BibTeX{} 示例数据库         \\
     \midrule
     其他     & \file{README.md}          & 基本说明                     \\
-             & \file{CHANGELOG.md}       & 更新日志                     \\
              & \file{latexmkrc}          & latexmk 的配置文件           \\
              & \file{Makefile}           & GNU make 的配置文件          \\
              & \file{.vscode/}           & VS Code 的配置文件           \\
@@ -203,6 +198,7 @@
 \pkg{notoccite},
 \pkg{titletoc},
 \pkg{url},
+\pkg{booktabs},
 \pkg{unicode-math}。
 
 另外，模板还对其他宏包提供了支持，包括：
@@ -236,7 +232,7 @@ Linux/Mac用户，可以直接使用 GNU make 工具，这是最简单的方法�
 \begin{shell}
   make
 \end{shell}
-编译说明文档 \file{ustcthesis-doc.pdf}：
+编译说明文档 \file{sysuthesis-guide.pdf}：
 \begin{shell}
   make doc
 \end{shell}
@@ -251,7 +247,7 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
 \end{shell}
 编译说明文档：
 \begin{shell}
-  latexmk -xelatex ustcthesis-doc.tex
+  latexmk -xelatex sysuthesis-guide.tex
 \end{shell}
 清理辅助文件可以用 \shellcmd{latexmk -c}。图形界面用户应参考编辑器的使用说明。
 
@@ -265,10 +261,10 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
   xelatex main.tex
   xelatex main.tex
 \end{shell}
-编译说明文档 \file{ustcthesis-doc.pdf}：
+编译说明文档 \file{sysuthesis-guide.pdf}：
 \begin{shell}
-  xelatex ustcthesis-doc.tex
-  xelatex ustcthesis-doc.tex
+  xelatex sysuthesis-guide.tex
+  xelatex sysuthesis-guide.tex
 \end{shell}
 \end{enumerate}
 
@@ -281,19 +277,19 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
 \DescribeOption{degree}
 选择学位，支持 \opt{bachelor}，\opt{master}，\opt{doctor}（默认）。
 \begin{latex}
-  \documentclass[degree=doctor]{ustcthesis}
+  \documentclass[degree=doctor]{sysuthesis}
 \end{latex}
 
 \DescribeOption{degree-type}
 学位类型。可选：学术型 \opt{academic}（默认），专业型 \opt{professional}。
 \begin{latex}
-  \documentclass[degree-type=professional]{ustcthesis}
+  \documentclass[degree-type=professional]{sysuthesis}
 \end{latex}
 
 \DescribeOption{language}
 论文全文的主要语言。可选：\opt{chinese}（默认），\opt{english}。
 \begin{latex}
-  \documentclass[language=english]{ustcthesis}
+  \documentclass[language=english]{sysuthesis}
 \end{latex}
 
 \DescribeOption{output}
@@ -303,7 +299,7 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
   \item \opt{electronic}：单面，并保留超链接颜色
 \end{itemize}
 \begin{latex}
-  \documentclass[output=electronic]{ustcthesis}
+  \documentclass[output=electronic]{sysuthesis}
 \end{latex}
 
 \DescribeOption{section-style}
@@ -313,7 +309,7 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
   \item \opt{arabic}：阿拉伯数字序号
 \end{itemize}
 \begin{latex}
-  \documentclass[section-style=arabic]{ustcthesis}
+  \documentclass[section-style=arabic]{sysuthesis}
 \end{latex}
 
 
@@ -322,7 +318,7 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
 \DescribeOption{fontset}
 用户也可以通过 \opt{fontset} 时指定使用预设的字库，如：
 \begin{latex}
-  \documentclass[fontset=windows]{ustcthesis}
+  \documentclass[fontset=windows]{sysuthesis}
 \end{latex}
 允许的选项有 \opt{windows}、\opt{mac}、\opt{ubuntu} 和 \opt{fandol}，
 具体使用的字体见表~\ref{tab:fontset}。
@@ -367,10 +363,10 @@ Windows 用户可能无法使用GNU make，使用 |latexmk| 也是一个比较�
 开始。
 
 \DescribeMacro{\maketitle}
-封面由 \cs{maketitle} 命令生成，其中的各项信息使用 \cs{ustcsetup} 命令以
+封面由 \cs{maketitle} 命令生成，其中的各项信息使用 \cs{sysusetup} 命令以
 key-value 的方式填写，如：
 \begin{latex}
-  \ustcsetup{
+  \sysusetup{
     title  = {论文中文题目},
     title* = {Thesis English Title},
   }
@@ -388,7 +384,7 @@ key-value 的方式填写，如：
     \opt{author}       & \opt{author*}       & 作者姓名      \\
     \opt{speciality}   & \opt{speciality*}   & 学科专业      \\
     \opt{supervisor}   & \opt{supervisor*}   & 导师      \\
-    \opt{supepractice-supervisorrvisor} & \opt{practice-supervisor*} & 导师 \\
+    \opt{practice-supervisor} & \opt{practice-supervisor*} & 实践导师 \\
     \opt{date}         & -                   & 完成时间      \\
     \opt{secret-level} & \opt{secret-level*} & 密级          \\
     \opt{secret-year}  & -                   & 保密/控阅年限 \\
@@ -398,7 +394,7 @@ key-value 的方式填写，如：
 
 有几点说明：
 \begin{itemize}
-  \item \cs{ustcsetup} 使用 \pkg{kvsetkeys} 机制，配置项之间不能有空行，否则会报错。
+  \item \cs{sysusetup} 使用 \pkg{kvsetkeys} 机制，配置项之间不能有空行，否则会报错。
   \item 其中带 |*| 后缀的选项用于设置英文封面。
   \item 导师姓名 \opt{supervisor} 允许多个姓名，使用“,”（西文逗号 U+002C）隔开。
   \item 完成时间 \opt{date} 应使用 ISO 格式（yyyy-mm-dd），默认为当前日期。
@@ -408,10 +404,6 @@ key-value 的方式填写，如：
 声明页由 \cs{copyrightpage} 命令生成。模板会根据 \opt{secret-level} 和
 \opt{secret-year} 的内容自动填写。
 
-\DescribeOption{reviewer}
-有的院系额外要求声明页有“评审专家签名”，可以在模板中使用 \cs{ustcsetup} 命令设置
-\opt{reviewer = true}。
-
 
 \subsection{摘要和章节}
 \DescribeEnv{abstract}
@@ -419,7 +411,7 @@ key-value 的方式填写，如：
 \DescribeEnv{notation}
 \DescribeEnv{acknowledgements}
 \DescribeEnv{achievements}
-对于特殊的章节，\cls{ustcthesis} 还提供了相应的环境：
+对于特殊的章节，\cls{sysuthesis} 还提供了相应的环境：
 \begin{itemize}
   \item 中文摘要：\env{abstract}
   \item 英文摘要：\env{abstract*}
@@ -431,14 +423,15 @@ key-value 的方式填写，如：
 
 \DescribeOption{keywords}
 \DescribeOption{keywords*}
-摘要的关键词应使用 \cs{ustcsetup} 的接口进行设置，在录入时使用西文逗号隔开，
+摘要的关键词应使用 \cs{sysusetup} 的接口进行设置，在录入时使用西文逗号隔开，为满足中法核的需要，本科论文加入了法语摘要，
 比如：
 \begin{latex}
   \begin{abstract}
     这里是摘要。
-    \ustcsetup{
+    \sysusetup{
       keywords  = {学位论文, 摘要, 关键词},
       keywords* = {Dissertation, Abstract, Keywords},
+      keywords** = {Mémoire de bachelor, L'Abstract, Mots-clés},
     }
   \end{abstract}
 \end{latex}
@@ -458,7 +451,7 @@ key-value 的方式填写，如：
 
 \subsection{插图和表格}
 
-《撰写手册》要求图题置于图的下方，表题置于表的上方。
+图题置于图的下方，表题置于表的上方。
 \LaTeX{} 的 \cs{caption} 命令并不能控制标题的位置，
 需要作者注意写在合适的地方。
 
@@ -485,7 +478,7 @@ key-value 的方式填写，如：
 用户可以通过设置 \opt{math-style} 选择数学符号样式（可选：
 \opt{GB}（中文默认），\opt{TeX}（英文默认）和 \opt{ISO}），比如：
 \begin{latex}
-  \ustcsetup{
+  \sysusetup{
     math-style = ISO,
   }
 \end{latex}
@@ -519,7 +512,7 @@ key-value 的方式填写，如：
 
 如果数学符号选择国标样式 |math-style = GB|，相当于设置了
 \begin{latex}
-  \ustcsetup{
+  \sysusetup{
     uppercase-greek    = italic,
     less-than-or-equal = slanted,
     integral           = upright,
@@ -571,25 +564,17 @@ key-value 的方式填写，如：
 
 \subsection{参考文献}
 
-参考文献支持使用 \BibTeX{} 或 BibLaTeX 生成。
-用户可以根据需求选择合适的方式。
+参考文献支持使用 \BibTeX{} 生成。
 
 
 \subsubsection{\BibTeX}
 
 \BibTeX{} 是 \LaTeX{} 处理参考文献的传统的方式。
-在本模板中需要载入 \pkg{natbib} 宏包，
-然后选择“顺序编码制”或“著者-出版年制”两种格式之一：
+在本模板中需要载入 \pkg{natbib} 宏包：
 \begin{latex}
   % 顺序编码制
   \usepackage[sort]{natbib}
-  \bibliographystyle{ustcthesis-numeric}
-\end{latex}
-或者
-\begin{latex}
-  % 著者-出版年制
-  \usepackage{natbib}
-  \bibliographystyle{ustcthesis-authoryear}
+  \bibliographystyle{sysuthesis-numerical}
 \end{latex}
 并且在生成参考文献表的位置使用 \cs{bibliography} 设置 \file{.bib} 数据库的路径。
 然后使用 \file{bibtex} 编译生成 \file{.bbl} 文件。
@@ -607,7 +592,7 @@ key-value 的方式填写，如：
 
 模板默认为上标样式，也可以将引用标注统一设为 \opt{inline} 样式。
 \begin{latex}
-  \ustcsetup{
+  \sysusetup{
     cite-style = inline,
   }
 \end{latex}
@@ -645,31 +630,6 @@ key-value 的方式填写，如：
     不带 \file{.tex} 后缀。
   \item 每章都要使用 \cs{bibliographystyle} 和 \cs{bibliography} 命令。
 \end{enumerate}
-
-
-\subsubsection{BibLaTeX}
-
-BibLaTeX 是较新的参考文献处理方案。
-需要在载入宏包时通过选择样式（\opt{style}），
-并且在导言区使用 \cs{addbibresource} 设置数据库的路径，
-最后在参考文献表的位置使用 \cs{printbibliography} 输出。
-\begin{latex}
-  \usepackage[style=ustcthesis-authoryear]{biblatex}
-  \addbibresource{bib/ustc.bib}
-\end{latex}
-使用 BibLaTeX 必须用 \file{biber} 编译生成参考文献表。
-这里的样式是在 \href{https://ctan.org/pkg/biblatex-gb7714-2015}{biblatex-gb7714-2015}
-的基础上进行了少量修改。
-一些额外用法可以参考该宏包的文档。
-
-对于顺序编码制，文献引用标注默认为上标样式。
-如果要切换为与正文平排，一种方法是使用 \cs{parencite}，
-另一种是载入 \pkg{biblatex} 时统一设置。
-\begin{latex}
-  \usepackage[bibstyle=ustcthesis-numeric,
-              citestyle=ustcthesis-inline]{biblatex}
-\end{latex}
-
 
 
 \end{document}
