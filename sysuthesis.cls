@@ -1,6 +1,4 @@
 %
-% 
-%
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
 % of this license or (at your option) any later version.
@@ -435,7 +433,7 @@
 \RequirePackage{notoccite}
 \RequirePackage{makecell}
 \RequirePackage{multirow}
-\RequirePackage{csvsimple-l3} % 从 CSV 中自动导入表格
+\RequirePackage{csvsimple-l3} % 将 csv 表格导入到文本中
 \RequirePackage{adjustbox}
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
 %\RequirePackage{titlesec}
@@ -620,7 +618,7 @@
 
 % 字号
 
-% 正文字号12bp，行距20bp；
+% 正文字号12bp，行距21bp；
 % 其他命令的行距按照相同的的比例设置，如表~\ref{tab:fontsize}。
 % \begin{table}[htb]
 %   \centering
@@ -715,7 +713,7 @@
   \fi
 \fi
 
-% 《撰写手册》要求西文字体使用 Times New Roman 和 Arial，
+% 西文字体使用 Times New Roman 和 Arial，
 % 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
 % TeX Gyre Heros。
 \ifsysu@font@auto
@@ -773,8 +771,7 @@
 }
 
 % STIX Two 字体。
-% STIX 文件名在 v2.10 2020-12-19 从
-% \file{STIX2Text-Regular.otf}、\file{STIX2Math.otf} 分别改为
+% STIX 文件名为
 % \file{STIXTwoText-Regular.otf}、\file{STIXTwoMath-Regular.otf}。
 \let\sysu@font@family@stix\@empty
 \newcommand\sysu@set@stix@names{%
@@ -802,8 +799,7 @@
 }
 
 % XITS 字体。
-% XITS 的文件名在 v1.109 2018-09-30
-% 从 \file{xits-regular.otf}、\file{xits-math.otf} 分别改为
+% XITS 的文件名为
 % \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf}。
 \let\sysu@font@family@xits\@empty
 \newcommand\sysu@set@xits@names{%
@@ -838,7 +834,7 @@
   \sysu@set@texgyre@sans@mono
 }
 
-% Libertinus 的文件名在 v6.7 2019-04-03 从小写改为驼峰式，
+% Libertinus 的文件名为驼峰式，
 % 在大小写敏感的平台上需要进行判断。
 \let\sysu@font@family@libertinus\@empty
 \newcommand\sysu@set@libertinus@names{%
@@ -1549,7 +1545,6 @@
 % 本科生：上、下、左、右、装订线的页边距分别为：2.5cm，2.0cm，3.0cm，3.0cm，0cm。装订线位置：左。左右对称页边距。
 % 页眉距边界2.0cm
 % 页脚距边界1.75cm
-% Word 模板中，页眉线是跟版心上边缘重合的，所以 headsep 设为 1pt，防止页眉线与版心内容重叠（#413）。
 \ifsysu@degree@graduate
   \geometry{
     paper      = a4paper,
@@ -1579,7 +1574,7 @@
   \fancyhf{}%
   %
   % 页眉与该部分的章标题相同，宋体 9 磅（小五号）居中。
-  % 页码：宋体 9 磅、页面下脚居中。
+  % 页码：宋体 9 磅、页面页脚居中。
   \ifsysu@degree@graduate
     \def\sysu@hf@font{\fontsize{9bp}{12bp}\selectfont}
     \fancyhead[C]{\sysu@hf@font\leftmark}%
@@ -1648,7 +1643,7 @@
 	\pagestyle{plain}%
 }
 
-% “第 1 章”要另页起。
+% “第 1 章”要从单数页起。
 \renewcommand\mainmatter{%
     \cleardoublepage
     \pagenumbering{arabic}%
@@ -1888,7 +1883,7 @@
 }
 
 % 中文封面：
-% 密级仿宋 14 磅；
+% 密级黑体 12 磅；
 % 论文类型黑体 56 磅；
 % 论文题目黑体 26 磅加粗居中，单倍行距；
 % 作者姓名宋体 16 磅，单倍行距；
@@ -1901,7 +1896,7 @@
   	\centering
 %   扉页右上角标注密级  	
   	\parbox[t][0.6cm][t]{\textwidth}{%
-  	  \raggedleft\fangsong\fontsize{14bp}{14bp}\selectfont
+  	  \raggedleft\heiti\fontsize{12bp}{12bp}\selectfont
   	  \null\sysu@secret@level\par}\par
 %  	  \vskip 0.5cm%
     \includegraphics[width=11cm]{figures/SYSULogo}\\
@@ -1939,7 +1934,7 @@
     }
     \vfill
     \zihao{-5}
-    {\centering\sysu@date@zh@short} % 使用全中文日期，封面会更正式
+    {\centering\sysu@date@zh@short} % 日期显示年月
   	
   \end{titlepage}%
   \sysu@reset@main@language
@@ -1956,13 +1951,12 @@
     \includegraphics[width=3cm]{figures/sysu-logo.pdf}
     \vskip 1.2cm%
       {\zihao{-0}\textcolor{sysugreen}{\rmfamily\textbf{\ \sysu@thesis@name}}}
-    
-    \vskip 1.2cm%
+    \vspace{\baselineskip}
     
     % 做分割线
     \noindent\makebox[\linewidth]{ { \color{sysugreen} \rule{\paperwidth}{0.12cm} } }
     \noindent\makebox[\linewidth]{ { \color{sysugreen} \rule[0.8\baselineskip]{\paperwidth}{0.05cm} } }
-    
+
     \ \vskip 1.5cm%
     
       \begin{tabular}{lp{140bp}lp{140bp}}%
@@ -1989,7 +1983,7 @@
     % 小三对应15pt
     \renewcommand{\arraystretch}{2}
   % \setlength\arrayrulewidth{1.4pt}
-    \fontsize{15}{21}\heiti\selectfont
+    \fontsize{15}{24}\heiti\selectfont
     \begin{tabular}{cc}
 	   % [s] 两端对齐
 	    \makebox[2.2cm][s]{姓名}     & \makebox[8cm]{\hfill\sysu@author\hfill}   \\ \cline{2-2}
@@ -2043,8 +2037,7 @@
 }
 \newlength\sysu@title@page@item@width
 
-% 重新定义 \cs{maketitle}，调用 \cs{sysu@makezhtitle}, \cs{sysu@makeentitle}
-% 分别生成中、英文封面。
+% 重新定义 \cs{maketitle}，分别生成本科生、研究生封面
 \renewcommand\maketitle{%
   \newgeometry{margin=2.54cm}%
   \pagenumbering{Alph}%
@@ -2202,9 +2195,6 @@
 % 各章标题，例如：“第1章  引言”。
 % 章序号采用阿拉伯数字，章序号与标题之间空一个汉字符，采用黑体三号字，居中书写，单倍行距，段前24磅，段后18磅。
 % 摘要、目录和列于目录中与章平级的其它部分的标题（如参考文献、附录、致谢等）也用这同一种格式。
-
-% 注意 \pkg{ctex} v2.4.3 以下版本的bug会导致章节标题前后的距离的实际值偏大。
-% 另外 \pkg{ctex} v2.2 前的beforeskip的符号有特殊意义。
 \ctexset{
   chapter = {
     format      = \centering\heiti\fontsize{16bp}{21.8bp}\selectfont,
@@ -2302,14 +2292,6 @@
     section = {
       format = \sffamily\fontsize{14bp}{25.67bp}\selectfont,
     },
-%    subsection = {
-%      format    = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
-%    },
-%    subsubsection = {
-%      format    = \rmfamily\bfseries\fontsize{12bp}{21bp}\selectfont,
-%      number    = （\arabic{subsubsection}）,
-%      aftername = {},
-%    },
   }
 \fi
 
@@ -2457,14 +2439,6 @@
 }
 \fi
 
-% Reserved for compatibility until 2020-07-01.
-%\newenvironment{enabstract}{%
-%  \sysu@deprecated{'enabsctract' environment}{2020-07-01}{'abstract*'}%
-%  \begin{abstract*}%
-%}{%
-%  \end{abstract*}%
-%}
-
 
 % \subsection{目录}
 
@@ -2473,7 +2447,7 @@
   \cleardoublepage
   \pagestyle{plain}%
   \sysu@chapter{\contentsname}%
-  \setcounter{tocdepth}{1}% 设置目录深度为1，即只显示到section （论文中的章 为 Chapter， 1.1 这种为 Section，上面的目录深度表示 section 的深度）
+  \setcounter{tocdepth}{1}% 设置目录深度为1，即只显示到section （论文中的章为 Chapter， 1.1 这种为 Section，上面的目录深度表示 section 的深度）
   \@starttoc{toc}%
 }
 
@@ -2487,8 +2461,8 @@
 
 \contentsmargin{0bp}
 
-% 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前 6 磅，段后 0 磅；
-% 其他内容采用宋体小四号字，行距 20 磅，段前、段后均为 0 磅。
+% 目录中的章标题行采用黑体小四号字，固定行距 21 磅，段前 6 磅，段后 0 磅；
+% 其他内容采用宋体小四号字，行距 21 磅，段前、段后均为 0 磅。
 % 章标题行居左书写，一级节标题行缩进 1 个汉字符，二级节标题行缩进 2 个汉字符。
 % 带有序号的各级标题，其序号与题名之间均空一字符，行末右顶格。
 \ifsysu@degree@graduate
