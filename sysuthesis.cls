@@ -497,7 +497,6 @@
 }%
 
 
-
 % \subsection{处理语言}
 
 % 定义 \cs{sysu@main@language}，当在导言区修改 \option{language} 时，
@@ -646,14 +645,16 @@
 %   \end{tabular}
 % \end{table}
 %
+% 表达式的行距：段前6磅、段后6磅。
+%
 % 注意重定义 \normalsize 应在 \pkg{unicode-math} 的 \cs{setmathfont} 前。
 \newcommand\sysu@set@font@size{%
 %  \ifsysu@degree@graduate
     \renewcommand\normalsize{%
       \@setfontsize\normalsize{12bp}{21bp}%
-      \abovedisplayskip 12bp \@plus3bp \@minus7bp%
-      \abovedisplayshortskip 0bp \@plus3bp%
-      \belowdisplayshortskip 6.5bp \@plus3.5bp \@minus3bp%
+      \abovedisplayskip 6bp \@plus3bp \@minus3bp%
+      \abovedisplayshortskip 6bp \@plus3bp \@minus3bp%
+      \belowdisplayshortskip \abovedisplayshortskip
       \belowdisplayskip \abovedisplayskip
       \let\@listi\@listI}%
     %
@@ -2603,8 +2604,8 @@
 % \cs{sloppy} 可以减少“overfull boxes”。
 \sloppy
 
-% 禁止扩大段间距。（\href{https://github.com/sysutug/sysuthesis/issues/209}{
-%   sysutug/sysuthesis\#209}）
+% 禁止扩大段间距。（\href{https://github.com/ustctug/ustcthesis/issues/209}{
+%   ustctug/ustcthesis\#209}）
 \raggedbottom
 
 % 段间距 0 磅。
@@ -2705,20 +2706,24 @@
   skip           = 6bp,
   figureposition = bottom,
   tableposition  = top,
-  justification  = centering,
+  justification  = centerlast,
 }
-% 设置中英文图/表题供研究生论文选用
+% 研究生论文图、表标题字体加粗
 \ifsysu@degree@graduate
-  \RequirePackage[list=off]{bicaption}
-  \DeclareCaptionOption{bi-first}[]{}% 设置第一种语言的图/表题
-  \DeclareCaptionOption{bi-second}[]{% 设置第二种语言的图/表题
-  	\sysusetup{language=english}
-  }
-  \captionsetup[bi-first]{bi-first}%
-  \captionsetup[bi-second]{bi-second}%
   \captionsetup{font+=bf}
 \fi
 
+% 中英文双标题
+\AtEndOfPackageFile*{bicaption}{
+  \captionsetup[bi-first]{lang = chinese}% 第一种语言图、表标题
+  \captionsetup[bi-second]{% 第二种语言图、表标题
+    lang = english,
+    list = off,
+  }
+  \renewcommand\selectcaptionlanguage[2]{%
+    \sysusetup{language = #2}%
+  }
+}
 % 设置三线表顶部和底部横线宽度
 \setlength\heavyrulewidth{1.5pt}
 
@@ -2877,14 +2882,14 @@
   \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
   \@namedef{bibstyle@author-year}{\bibstyle@authoryear}
   %
-  % 几种种引用样式，与 \file{bst} 文件名保持一致，
+  % 几种引用样式，与 \file{bst} 文件名保持一致，
   % 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
   \@namedef{bibstyle@sysuthesis-numerical}{\bibstyle@super}
   \@namedef{bibstyle@sysuthesis-authoryear}{\bibstyle@authoryear}
   \@namedef{bibstyle@sysuthesis-bachelor}{\bibstyle@super}
   %
   % 如果载入 `natbib` 前设置了 `cite-style`，这里先进行配置。
-  % https://github.com/sysutug/sysuthesis/issues/327
+  % https://github.com/ustctug/ustcthesis/issues/327
   \ifx\sysu@cite@style\@empty\else
     \citestyle{\sysu@cite@style}%
   \fi
@@ -3320,11 +3325,11 @@
   }
   %
   % \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题，见
-  % \href{https://github.com/sysutug/sysuthesis/issues/223}{%
-  %   sysutug/sysuthesis\#223}，
+  % \href{https://github.com/ustctug/ustcthesis/issues/223}{%
+  %   ustctug/ustcthesis\#223}，
   % \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
-  % \href{https://github.com/sysutug/sysuthesis/issues/235}{%
-  %   sysutug/sysuthesis/\#235}。
+  % \href{https://github.com/ustctug/ustcthesis/issues/235}{%
+  %   ustctug/ustcthesis/\#235}。
   \@ifpackagelater{hyperref}{2019/04/27}{}{%
     \g@addto@macro\psdmapshortnames{\let\mu\textmu}%
   }
