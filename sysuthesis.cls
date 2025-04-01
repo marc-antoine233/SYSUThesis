@@ -199,6 +199,10 @@
     },
     default = auto,
   },
+  logo-path = {
+    name = logo@path,
+    default = figures/, % 此处修改 logo 目录，方便后面不与论文图片混在一起
+  },
   fontset = {
     choices = {
       auto,
@@ -346,10 +350,6 @@
     },
     default = false,
   },
-  logo-path = {
-    name = logo@path,
-    default = figures/SYSULogo,
-  },
 }
 
 % 将 \sysu@cite@style 置空方便后续进行判断。
@@ -431,7 +431,6 @@
 \RequirePackage{color}
 \RequirePackage{titletoc}
 \RequirePackage{caption}
-\RequirePackage{bicaption}
 \RequirePackage{enumitem}
 \RequirePackage[perpage]{footmisc}
 \RequirePackage{url}
@@ -1905,7 +1904,7 @@
   	  \raggedleft\heiti\fontsize{12bp}{12bp}\selectfont
   	  \null\sysu@secret@level\par}\par
 %  	  \vskip 0.5cm%
-    \includegraphics[width=11cm]{\sysu@logo@path}\\
+    \includegraphics[width=11cm]{\sysu@logo@path/SYSULogo}\\
   	\vskip 1.2cm%
   	{\rmfamily\bfseries\fontsize{26bp}{26bp}\selectfont
   		\sysu@thesis@name\par}%
@@ -1954,7 +1953,7 @@
     \sysu@pdfbookmark{Cover}%
     \centering
     \vskip 0.5cm%
-    \includegraphics[width=3cm]{figures/sysu-logo.pdf}
+    \includegraphics[width=3cm]{\sysu@logo@path/sysu-logo.pdf}
     \vskip 1.2cm%
       {\zihao{-0}\textcolor{sysugreen}{\rmfamily\textbf{\ \sysu@thesis@name}}}
     \vspace{\baselineskip}
