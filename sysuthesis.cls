@@ -346,6 +346,10 @@
     },
     default = false,
   },
+  logo-path = {
+    name = logo@path,
+    default = figures/SYSULogo,
+  },
 }
 
 % 将 \sysu@cite@style 置空方便后续进行判断。
@@ -1899,7 +1903,7 @@
   	  \raggedleft\heiti\fontsize{12bp}{12bp}\selectfont
   	  \null\sysu@secret@level\par}\par
 %  	  \vskip 0.5cm%
-    \includegraphics[width=11cm]{figures/SYSULogo}\\
+    \includegraphics[width=11cm]{\sysu@logo@path}\\
   	\vskip 1.2cm%
   	{\rmfamily\bfseries\fontsize{26bp}{26bp}\selectfont
   		\sysu@thesis@name\par}%
