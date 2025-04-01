@@ -431,6 +431,7 @@
 \RequirePackage{color}
 \RequirePackage{titletoc}
 \RequirePackage{caption}
+\RequirePackage{bicaption}
 \RequirePackage{enumitem}
 \RequirePackage[perpage]{footmisc}
 \RequirePackage{url}
