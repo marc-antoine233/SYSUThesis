@@ -9,7 +9,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
-\newcommand\sysuthesisversion{4.0.0-beta.6}
+\newcommand\sysuthesisversion{v2.0.0-beta1}
 \ProvidesClass{sysuthesis}[2025/02/25 v\sysuthesisversion\space sysu thesis template]
 
 % 报错和警告
@@ -3276,8 +3276,7 @@
     bookmarksnumbered  = true,
     bookmarksopen      = true,
     bookmarksopenlevel = 1,
-% 书签到二级节（x.x.x），方便编译时浏览
-%    bookmarksopenlevel = 2,
+%    bookmarksopenlevel = 2, % 书签到二级节（x.x.x），方便编译时浏览
     bookmarksdepth     = 2,
     linktoc            = all,
     unicode            = true,

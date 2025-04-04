@@ -9,13 +9,9 @@
 
 1. 使用说明文档 `sysuthesis-guide.pdf` 在发布版中附带，用户也可自行编译；**使用模板前应仔细阅读**。
 
-2. 本科论文模板格式参照计算机学院的模板，全校通用。研究生模板由于学校并无详细的规定，因此为试用模板，但已经得到下列学院支持：
-
-   - [x] 数学学院
-   - [x] 中法核工程与技术学院
-   - [x] 生命科学学院
-   
-   希望更多的院系能加入进来，做为中山大学研究生论文的共同标准。
+2. 本科论文模板格式按照本科生论文规范编写，全校通用。研究生模板由于学校并无详细的规定，因此为试用模板，
+不作为强制标准，但已经有部分学院在使用以及在此基础上进行修改与使用。本模板为其他学院模板提供参考，
+若学院无具体规定模板样式，则可直接使用。
 
 3. 本模板要求 TeX Live、MacTeX、MiKTeX 不低于 2017 年的发行版，
 并且尽可能升级到最新。安装和升级方法见
@@ -28,7 +24,7 @@
 
 - GitHub Releases：<https://github.com/1FCENdoge/SYSUThesis/releases>
 
-## 编译文档
+## 本地编译文档
 
 - 编译模板的使用说明文档 `sysuthesis-guide.pdf`：
    ```
@@ -50,11 +46,27 @@
    make clean      # 删除编译过程中生成的临时文件
    ```
 
+## overleaf 编辑（在线）
+
+本模板可以使用 [overleaf](https://www.overleaf.com/) 在线编辑，需要在 [releases](https://github.com/1FCENdoge/SYSUThesis/releases) 页面提前下载 `Source code (zip)`。
+
+步骤如下：
+
+1. 进入 [overleaf](https://overleaf.com) 并登录账号
+2. 左侧 `New Project` 选择 `Upload Project`
+3. 上传 `.zip` 压缩包，建立新项目
+4. 点击 `menu`，滑动到下方 `Settings` 的 `Compiler` 选择 `XeLaTeX`
+5. 打开 `main.tex` 文件，点击中间右侧上方的 `Recompile` 进行编译
+6. 如果顺利可以看到 pdf 的预览
+7. 如果无法加载图片只有路径信息，点击 `Recompile` 旁边的倒三角，其中的 `Compile Mode` 选择 `Normal` 模式
+
+此时可以得到完整的 `main.pdf` 文件。
+
 ## 反馈问题
 
 如果发现模板有问题，请按照以下步骤操作：
 
-1. 阅读学校的标准，判断是否符合学校的要求：[本科生论文规范](https://lingnan.sysu.edu.cn/undergraduateprogram/node/753)；[研究生论文规范](https://graduate.sysu.edu.cn/sites/default/files/2019-04/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%BD%8D%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82.pdf)；
+1. 阅读学校的标准，判断是否符合学校的要求：[本科生论文规范](https://lingnan.sysu.edu.cn/undergraduateprogram/node/753)；[研究生论文规范](https://graduate.sysu.edu.cn/sites/default/files/2019-04/中山大学研究生学位论文格式要求.pdf)；
 2. 阅读 [常见问题 FAQ](https://github.com/ustctug/ustcthesis/wiki/常见问题)；
 3. 将 TeX 发行版和宏包升级到最新，并且将模板升级到 Github 上最新版本，
 查看问题是否已经修复；
@@ -74,7 +86,7 @@
 ## 更多资料
 
 - [本科生论文规范](https://lingnan.sysu.edu.cn/undergraduateprogram/node/753)
-- [研究生论文规范](https://graduate.sysu.edu.cn/sites/default/files/2019-04/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%BD%8D%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82.pdf)
+- [研究生论文规范](https://graduate.sysu.edu.cn/sites/default/files/2019-04/中山大学研究生学位论文格式要求.pdf)
 - [LaTeX 新手入门指南](https://github.com/ustctug/ustcthesis/wiki/新手指南)
 - [常见问题 FAQ](https://github.com/ustctug/ustcthesis/wiki/常见问题)
 - [参与开发](https://github.com/ustctug/ustcthesis/wiki/参与开发)
