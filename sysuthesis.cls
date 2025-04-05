@@ -338,10 +338,11 @@
   badge-color = {
     name = badge@color,
     choices = {
-      blue,
+      green,
+      red,
       black,
     },
-    default = blue,
+    default = green,
   },
   reviewer = {
     choices = {
@@ -395,8 +396,6 @@
 \DeclareVoidOption{numbers}{\sysusetup{cite-style=inline}\sysu@legacy@cite@styletrue}
 \DeclareVoidOption{authoryear}{\sysusetup{cite-style=authoryear}\sysu@legacy@cite@styletrue}
 \DeclareVoidOption{arabic}{\sysusetup{section-style=arabic}}
-\DeclareVoidOption{colorlogo}{\sysusetup{badge-color=blue}}
-\DeclareVoidOption{bwlogo}{\sysusetup{badge-color=black}}
 
 % 载入 \cls{ctexbook}。
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -1868,7 +1867,7 @@
 %
 % 推迟定义颜色以避免调用 \pkg{xcolor} 时的警告
 \AtBeginDocument{
-  \definecolor{sysugreen}{cmyk}{0.96,0.53,1,0.25}
+  \definecolor{sysugreen}{cmyk}{1,0,1,0.6}
 }
 
 % 添加 PDF 书签，在 \pkg{hyperref} 载入后才有效。
@@ -3287,7 +3286,7 @@
   \ifsysu@output@electronic
     \hypersetup{
       colorlinks = true,
-      allcolors  = blue,
+      allcolors  = green,
     }
   \else
     \hypersetup{hidelinks}
